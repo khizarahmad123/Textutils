@@ -1,43 +1,51 @@
 import React,{useState} from 'react'
 
-export default function About(){
+export default function About(props){
 // const [mystyle, setmyStyle]=useState(
 
-const[myStyle,setMyStyle] =useState(
-{
+// const[myStyle,setMyStyle] =useState(
+// {
 
-  color: "black",
-  backgroundColor : "white",
-})
-const[btntext,setBtntext]=useState('enable dark mode')
-
-const toggleStyle=()=>{
-  if (myStyle.color=== 'black') {
-    setMyStyle({
-       color: "white",
-  backgroundColor : "black",
-  border : '2px solid white'
-})
-setBtntext("enable light mode")
-    }
-    else{
-      setMyStyle({
-        color: "black",
-   backgroundColor : "white",
-    })
-setBtntext("enable dark mode")
-
-  }
+//   color: "black",
+//   backgroundColor : "white",
+// })
+let myStyle={
+  color: props.mode==='dark'?'white':'black',
+  backgroundColor:props.mode==='dark'?'grey':'white',
+  borderColor: props.mode==='dark'?'white':'black',
+  border: '2px solid',
 }
+// const[btntext,setBtntext]=useState('enable dark mode')
 
+// const toggleStyle=()=>{
+//   if (myStyle.color=== 'black') {
+//     setMyStyle({
+//        color: "white",
+//   backgroundColor : "black",
+//   border : '2px solid white'
+// })
+// setBtntext("enable light mode")
+//     }
+//     else{
+//       setMyStyle({
+//         color: "black",
+//    backgroundColor : "white",
+//     })
+// setBtntext("enable dark mode")
 
+//   }
+// }
+
+// let headingstyle={
+//   color:props.mode==='light'?'black':'white'
+// }
 
     
   return (
-    <div className='container' style={myStyle}>
-        <h1>About us</h1>
+    <div className='container'>
+        <h1 style={{color:props.mode==='light'?'black':'white'}}>About us</h1>
       <div className="accordion" id="accordionExample">
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header" id="headingOne">
       <button className="accordion-button" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Accordion Item #1
@@ -49,7 +57,7 @@ setBtntext("enable dark mode")
       </div>
     </div>
   </div>
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header" id="headingTwo">
       <button className="accordion-button collapsed" type="button"style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         Accordion Item #2
@@ -61,7 +69,7 @@ setBtntext("enable dark mode")
       </div>
     </div>
   </div>
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header" id="headingThree">
       <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Accordion Item #3
@@ -74,9 +82,9 @@ setBtntext("enable dark mode")
     </div>
   </div>
 </div>
-<div className="container my-3">
+{/* <div className="container my-3">
 <button type="button" onClick={toggleStyle} className="btn btn-primary">{btntext}</button>
-</div>
+</div> */}
     </div>
   )
   }
