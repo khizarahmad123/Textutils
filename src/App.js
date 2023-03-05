@@ -25,19 +25,21 @@ function App() {
         setAlert(null)
       }, 2000);
   }
-  const toggleMode= ()=> {
+  const removebodyclasses=()=>{
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-warning')
+  }
+ 
+  const toggleMode= (cls)=> {
+    removebodyclasses()
+    console.log(cls)
+    document.body.classList.add('text-bg-'+ cls)
     if (mode === "light") {
       setMode("dark")
       document.body.style.backgroundColor= 'grey'
-      // showalert("dark mode has been enable", "success")
-      // setInterval(() => {
-      //   document.title='Textutils is amazing'
-        
-      // }, 2000);
-      // setInterval(() => {
-      //   document.title='install Textutils is now'
-        
-      // }, 1500);
+      
     }
     else {
       setMode("light")
